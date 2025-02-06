@@ -12,9 +12,13 @@ const HomePage = () => {
           {() => {
             return (
               <>
-                <Input name="test" placeholder="Test" />
+                <Input name="test" placeholder="Text" label="Text" />
+                <br />
                 <DropDown
                   name="dropdown"
+                  label="Dropdown"
+                  placeholder="Select Dropdown"
+                  hasSearch
                   options={[
                     {
                       value: 'option1',
@@ -25,7 +29,7 @@ const HomePage = () => {
                       title: 'Option 2',
                     },
                     {
-                      value: 'option2',
+                      value: 'option3',
                       title: 'Option 3',
                     },
                   ]}

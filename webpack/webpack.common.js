@@ -18,6 +18,7 @@ module.exports = {
       '@validations': path.resolve(__dirname, '..', 'src/validations'),
       '@apis': path.resolve(__dirname, '..', 'src/apis'),
       '@store': path.resolve(__dirname, '..', 'src/store'),
+      '@hooks': path.resolve(__dirname, '..', 'src/hooks'),
     },
   },
   module: {

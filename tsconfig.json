@@ -31,7 +31,9 @@
         "@validations/*": ["./validations/*"],
         "@validations": ["./validations"],
         "@apis/*": ["./apis/*"],
-        "@apis": ["./apis"]
+        "@apis": ["./apis"],
+        "@hooks/*": ["./hooks/*"],
+        "@hooks": ["./hooks"]
       }
     },
 

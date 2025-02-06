@@ -1,11 +1,22 @@
-const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
+const path = require('path')
 module.exports = {
-  mode: "development",
+  mode: 'development',
+  watchOptions: {
+    ignored: /node_modules|\.git/,
+    poll: 1000,
+  },
+  output: {
+    publicPath: '/',
+  },
   devServer: {
     hot: true,
     open: true,
-    historyApiFallback:true
+    compress: true,
+    historyApiFallback: {
+      rewrites: [{ from: /^\/admin/, to: '/index.html' }],
+    },
   },
-  devtool: "cheap-module-source-map",
-  plugins: [new ReactRefreshWebpackPlugin()]
-};
+  devtool: 'source-map',
+  plugins: [new ReactRefreshWebpackPlugin()],
+}

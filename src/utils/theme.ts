@@ -35,6 +35,10 @@ export const colors: any = {
   primary: '#5AA06E',
   primary50: '#EFF6F1',
   danger: '#ED4337',
+  white: '#fff',
+  black: '#000',
+  inputBorder: '#C8CDE0',
+  placeholder: '#88888C',
 }
 
 export const fontFamily: any = {
