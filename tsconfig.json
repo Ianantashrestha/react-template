@@ -1,0 +1,40 @@
+{
+    "compilerOptions": {
+      "target": "ES6",
+      "module": "ESNext",
+      "moduleResolution": "node",
+      "lib": [
+        "DOM",
+        "ESNext"
+      ],
+      "jsx": "react-jsx",
+      "noEmit": true,
+      "isolatedModules": true,
+      "esModuleInterop": true,
+      "strict": false,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "resolveJsonModule": true,
+      "baseUrl": "./src",
+      "paths": {
+        "@/*": ["./src/*"],
+        "@components/*": ["./components/*"],
+        "@components": ["./components"],
+        "@assets/*": ["./assets/*"],
+        "@assets": ["./assets"],
+        "@pages/*": ["./pages/*"],
+        "@pages": ["./pages"],
+        "@store/*": ["./store/*"],
+        "@store": ["./store"],
+        "@utils/*": ["./utils/*"],
+        "@utils": ["./utils"],
+        "@validations/*": ["./validations/*"],
+        "@validations": ["./validations"],
+        "@apis/*": ["./apis/*"],
+        "@apis": ["./apis"]
+      }
+    },
+
+    "include": ["src/**/*"]
+
+}
