@@ -1,53 +1,53 @@
-import { FC, ChangeEvent } from 'react'
+import { ChangeEvent, ChangeEventHandler, FC } from 'react'
+import { StyleFormWrapper, StyleInput, StyleLabel } from '../style'
 import { Field } from 'formik'
-import { StyleFormWrapper, StyleLabel, StyleTextArea } from './style'
-import ErrorMessage from './ErrorMessage'
-interface TextAreaProps {
-  name: string
-  onChange: (value: string) => void
+import ErrorMessage from '../ErrorMessage'
+interface InputProps {
+  type?: 'text' | 'password' | 'email' | 'url' | 'date'
+  onChange?: (value: string) => void
   placeholder?: string
   label?: string
-  rows?: number
-  cols?: number
   required?: boolean
+  name: string
   styleInput?: string
   styleLabel?: string
   styleWrapper?: string
 }
-const TextArea: FC<TextAreaProps> = ({
-  name,
+const Input: FC<InputProps> = ({
+  type = 'text',
   label,
+  name,
   onChange,
   styleWrapper = '',
   styleLabel = '',
   ...restProps
 }) => {
-  const handleChange = ({ form, name, event }: any) => {
-    const value = event.target.value
+  const handleChange = ({ form, name, value }: any) => {
     onChange && onChange(value)
     form.setFieldValue(name, value)
   }
+
   return (
-    <Field>
+    <Field name={name}>
       {({ field, meta, form }) => {
         const hasError = meta.touched && meta.error
         return (
-          <StyleFormWrapper hasError={hasError}>
+          <StyleFormWrapper styleWrapper={styleWrapper}>
             {!!label && (
               <StyleLabel hasError={hasError} styleLabel={styleLabel}>
                 {label}
               </StyleLabel>
             )}
-            <StyleTextArea
-              hasError={hasError}
-              onChange={(event: ChangeEvent) => {
+            <StyleInput
+              value={field?.value || ''}
+              onChange={(event: ChangeEvent<HTMLInputElement>) => {
                 handleChange({
                   form,
                   name,
-                  event,
+                  value: event.target.value,
                 })
               }}
-              value={field?.value || ''}
+              hasError={hasError}
               {...restProps}
             />
             {!!hasError && <ErrorMessage message={meta.error} />}
@@ -58,4 +58,4 @@ const TextArea: FC<TextAreaProps> = ({
   )
 }
 
-export default TextArea
+export default Input

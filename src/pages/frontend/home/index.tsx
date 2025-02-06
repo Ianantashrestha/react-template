@@ -1,6 +1,6 @@
 import Container from '@components/container'
-import Input from '@components/fields/Input'
-import DropDown from '@components/fields/Dropdown'
+import Input from '@components/fields/input'
+import DropDown from '@components/fields/dropdown'
 import { Formik } from 'formik'
 
 const HomePage = () => {

@@ -10,9 +10,9 @@ import {
   StyleSelectedValue,
   StyleDropDownSearchInput,
   StyleDropDownSearchWrapper,
-} from './style'
-import ErrorMessage from './ErrorMessage'
-import Svg from '../svg'
+} from '../style'
+import ErrorMessage from '../ErrorMessage'
+import Svg from '../../svg'
 import debounce from '@utils/debounce'
 interface DropDownProps {
   options: Array<any>
