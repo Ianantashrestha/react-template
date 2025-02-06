@@ -1,6 +1,8 @@
 import Container from '@components/container'
 import Input from '@components/fields/input'
 import DropDown from '@components/fields/dropdown'
+import Editor from '@components/fields/editor'
+import Upload from '@components/fields/upload'
 import { Formik } from 'formik'
 
 const HomePage = () => {
@@ -8,11 +10,19 @@ const HomePage = () => {
     <>
       <Container>
         This is Home Page
-        <Formik initialValues={{}} onSubmit={() => {}}>
+        <Formik
+          initialValues={{
+            text: '',
+            dropdown: '',
+            editor: '',
+            upload: null,
+          }}
+          onSubmit={() => {}}
+        >
           {() => {
             return (
               <>
-                <Input name="test" placeholder="Text" label="Text" />
+                <Input name="text" placeholder="Text" label="Text" />
                 <br />
                 <DropDown
                   name="dropdown"
@@ -36,6 +46,11 @@ const HomePage = () => {
                   titleAsKey="title"
                   valueAsKey="value"
                 />
+                <br />
+                <Editor name="editor" label="Editor" />
+                <br />
+
+                <Upload label="Upload" name="upload" />
               </>
             )
           }}

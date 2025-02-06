@@ -1,6 +1,7 @@
 import { FC, ChangeEvent } from 'react'
 import { Field } from 'formik'
-import { StyleFormWrapper, StyleLabel, StyleTextArea } from '../style'
+import { StyleFormWrapper, StyleLabel } from '../style'
+import { StyleTextArea } from './style'
 import ErrorMessage from '../ErrorMessage'
 interface TextAreaProps {
   name: string
@@ -22,17 +23,17 @@ const TextArea: FC<TextAreaProps> = ({
   styleLabel = '',
   ...restProps
 }) => {
-  const handleChange = ({ form, name, event }: any) => {
+  const handleChange = ({ form, event }: any) => {
     const value = event.target.value
     onChange && onChange(value)
     form.setFieldValue(name, value)
   }
   return (
-    <Field>
+    <Field name={name}>
       {({ field, meta, form }) => {
         const hasError = meta.touched && meta.error
         return (
-          <StyleFormWrapper hasError={hasError}>
+          <StyleFormWrapper styleWrapper={styleWrapper}>
             {!!label && (
               <StyleLabel hasError={hasError} styleLabel={styleLabel}>
                 {label}
@@ -43,7 +44,6 @@ const TextArea: FC<TextAreaProps> = ({
               onChange={(event: ChangeEvent) => {
                 handleChange({
                   form,
-                  name,
                   event,
                 })
               }}

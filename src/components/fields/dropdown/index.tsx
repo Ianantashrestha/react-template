@@ -1,18 +1,16 @@
 import { Field } from 'formik'
 import { FC, useState, useRef, useEffect, ChangeEvent } from 'react'
+import { StyleFormWrapper, StyleLabel, StylePlaceholder } from '../style'
 import {
   StyleDropDownWrapper,
-  StyleFormWrapper,
-  StyleLabel,
-  StylePlaceholder,
   StyleDropDownOptionWrapper,
   StyleDropDownOption,
   StyleSelectedValue,
   StyleDropDownSearchInput,
   StyleDropDownSearchWrapper,
-} from '../style'
+} from './style'
 import ErrorMessage from '../ErrorMessage'
-import Svg from '../../svg'
+import Svg from '@components/svg'
 import debounce from '@utils/debounce'
 interface DropDownProps {
   options: Array<any>
@@ -28,6 +26,7 @@ interface DropDownProps {
   hasSearch?: boolean
   styleWrapper?: string
   styleLabel?: string
+  styleInput?: string
 }
 const DropDown: FC<DropDownProps> = ({
   options,
@@ -41,11 +40,14 @@ const DropDown: FC<DropDownProps> = ({
   isServerside = false,
   hasSearch = false,
   name,
+  styleInput = '',
+  styleLabel = '',
+  styleWrapper = '',
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [search, setSearch] = useState<string>('')
   const dropdownRef = useRef<HTMLDivElement>(null)
-  const handleChange = ({ form, name, value }) => {
+  const handleChange = ({ form, value }) => {
     setIsOpen(false)
     onChange && onChange(value)
     form.setFieldValue(name, value)
@@ -77,9 +79,17 @@ const DropDown: FC<DropDownProps> = ({
         const hasError = meta.touched && meta.error
 
         return (
-          <StyleFormWrapper ref={dropdownRef}>
-            {!!label && <StyleLabel>{label}</StyleLabel>}
-            <StyleDropDownWrapper onClick={() => setIsOpen(!isOpen)}>
+          <StyleFormWrapper ref={dropdownRef} styleWrapper={styleWrapper}>
+            {!!label && (
+              <StyleLabel hasError={hasError} styleLabel={styleLabel}>
+                {label}
+              </StyleLabel>
+            )}
+            <StyleDropDownWrapper
+              hasError={hasError}
+              onClick={() => setIsOpen(!isOpen)}
+              styleInput={styleInput}
+            >
               {!!placeholder && !field?.value ? (
                 <StylePlaceholder>{placeholder}</StylePlaceholder>
               ) : (
@@ -119,7 +129,6 @@ const DropDown: FC<DropDownProps> = ({
                       onClick={() => {
                         handleChange({
                           form,
-                          name,
                           value: option[valueAsKey],
                         })
                       }}

@@ -1,5 +1,6 @@
-import { ChangeEvent, ChangeEventHandler, FC } from 'react'
-import { StyleFormWrapper, StyleInput, StyleLabel } from '../style'
+import { ChangeEvent, FC } from 'react'
+import { StyleFormWrapper, StyleLabel } from '../style'
+import { StyleInput } from './style'
 import { Field } from 'formik'
 import ErrorMessage from '../ErrorMessage'
 interface InputProps {
@@ -22,7 +23,7 @@ const Input: FC<InputProps> = ({
   styleLabel = '',
   ...restProps
 }) => {
-  const handleChange = ({ form, name, value }: any) => {
+  const handleChange = ({ form, value }: any) => {
     onChange && onChange(value)
     form.setFieldValue(name, value)
   }
@@ -43,7 +44,6 @@ const Input: FC<InputProps> = ({
               onChange={(event: ChangeEvent<HTMLInputElement>) => {
                 handleChange({
                   form,
-                  name,
                   value: event.target.value,
                 })
               }}
