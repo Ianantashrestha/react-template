@@ -3,6 +3,7 @@ import Input from '@components/fields/input'
 import DropDown from '@components/fields/dropdown'
 import Editor from '@components/fields/editor'
 import Upload from '@components/fields/upload'
+import Button from '@components/button'
 import { Formik } from 'formik'
 
 const HomePage = () => {
@@ -51,6 +52,7 @@ const HomePage = () => {
                 <br />
 
                 <Upload label="Upload" name="upload" />
+                <Button type="submit" title="Submit" />
               </>
             )
           }}

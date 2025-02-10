@@ -8,6 +8,7 @@ import {
   StyleSelectedValue,
   StyleDropDownSearchInput,
   StyleDropDownSearchWrapper,
+  StyleDropDownOptionItems,
 } from './style'
 import ErrorMessage from '../ErrorMessage'
 import Svg from '@components/svg'
@@ -116,26 +117,28 @@ const DropDown: FC<DropDownProps> = ({
                     />
                   </StyleDropDownSearchWrapper>
                 )}
-                {options
-                  ?.filter((option) =>
-                    option[titleAsKey]
-                      .toLowerCase()
-                      .includes(search.toLowerCase()),
-                  )
-                  .map((option) => (
-                    <StyleDropDownOption
-                      isActive={field.value === option[valueAsKey]}
-                      key={option[valueAsKey]}
-                      onClick={() => {
-                        handleChange({
-                          form,
-                          value: option[valueAsKey],
-                        })
-                      }}
-                    >
-                      {option[titleAsKey]}
-                    </StyleDropDownOption>
-                  ))}
+                <StyleDropDownOptionItems>
+                  {options
+                    ?.filter((option) =>
+                      option[titleAsKey]
+                        .toLowerCase()
+                        .includes(search.toLowerCase()),
+                    )
+                    .map((option) => (
+                      <StyleDropDownOption
+                        isActive={field.value === option[valueAsKey]}
+                        key={option[valueAsKey]}
+                        onClick={() => {
+                          handleChange({
+                            form,
+                            value: option[valueAsKey],
+                          })
+                        }}
+                      >
+                        {option[titleAsKey]}
+                      </StyleDropDownOption>
+                    ))}
+                </StyleDropDownOptionItems>
               </StyleDropDownOptionWrapper>
             )}
             {!!hasError && <ErrorMessage message={meta.error} />}

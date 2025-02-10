@@ -10,11 +10,19 @@ export const StyleDropDownWrapper = styled.div<any>`
   padding: 0px 10px;
 `
 
-export const StyleDropDownOptionWrapper = styled.ul<any>`
+export const StyleDropDownOptionWrapper = styled.div<any>`
   width: 100%;
   background: ${(props) => props.theme.colors.white};
-  min-height: 100px;
   box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  z-index: 11;
+  top: 90px;
+`
+export const StyleDropDownOptionItems = styled.ul<any>`
+  width: 100%;
+  background: ${(props) => props.theme.colors.white};
+  max-height: 150px;
+  overflow-y: auto;
 `
 export const StyleDropDownOption = styled.li<any>`
   padding: 7px 10px;
